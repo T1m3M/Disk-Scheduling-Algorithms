@@ -28,7 +28,28 @@ def fcfs():
 
 def sstf():
     global sequence, total_head_mov
-    return
+
+    sequence.append(head_ptr)
+    curr = head_ptr
+    finished_requests = [False for _ in IORequests]
+
+    # While there's at least a waiting request
+    while False in finished_requests:
+        diff = [abs(curr - request) for request in IORequests]
+        waiting_requests_diff = []
+
+        # Getting only the unfinished requests
+        for i in range(len(diff)):
+            if not finished_requests[i]:
+                waiting_requests_diff.append(diff[i])
+
+        # Getting the minimum cost, appending the request and mark as finished
+        nearest_request_index = diff.index(min(waiting_requests_diff))
+        curr = IORequests[nearest_request_index]
+        sequence.append(curr)
+        finished_requests[nearest_request_index] = True
+
+    total_head_mov = calc_head_mov()
 
 
 def scan():
