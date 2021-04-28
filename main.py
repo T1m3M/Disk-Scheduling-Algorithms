@@ -18,6 +18,12 @@ def main():
             IORequests.append(int(request))
     head_ptr = int(input("Head pointer: "))
 
+    # Picking an algorithm
+    print("\nPick an algorithm's number:")
+    print("1- FCFS\n2- SSTF\n3- SCAN\n4- C-SCAN\n5- LOOK\n6- C-LOOK\n7- Newly optimized algorithm")
+    
+    alg = input("> ")
+
 
 if __name__ == '__main__':
     main()
