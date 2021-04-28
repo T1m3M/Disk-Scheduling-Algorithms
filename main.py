@@ -49,7 +49,7 @@ def newly_opt_alg():
 
 
 def main():
-    global IORequests, head_ptr
+    global IORequests, head_ptr, sequence, total_head_mov
 
     # User's input
     queue = input("I/O requests: ")
@@ -106,6 +106,10 @@ def main():
         # Output
         print(f"Sequence: {', '.join(str(x) for x in sequence)}")
         print(f"Total head movement: {total_head_mov}")
+
+        # reset the output variables
+        sequence.clear()
+        total_head_mov = 0
 
 
 if __name__ == '__main__':
