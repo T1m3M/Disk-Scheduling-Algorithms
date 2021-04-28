@@ -4,32 +4,42 @@ MAX_REQUEST = 199
 IORequests = []
 head_ptr = 0
 
+# outputs
+sequence = []
+total_head_mov = 0
+
 
 def fcfs():
-    return
+    global sequence, total_head_mov
 
 
 def sstf():
+    global sequence, total_head_mov
     return
 
 
 def scan():
+    global sequence, total_head_mov
     return
 
 
 def c_scan():
+    global sequence, total_head_mov
     return
 
 
 def look():
+    global sequence, total_head_mov
     return
 
 
 def c_look():
+    global sequence, total_head_mov
     return
 
 
 def newly_opt_alg():
+    global sequence, total_head_mov
     return
 
 
