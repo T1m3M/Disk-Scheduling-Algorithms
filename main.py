@@ -12,6 +12,11 @@ total_head_mov = 0
 def fcfs():
     global sequence, total_head_mov
 
+    sequence.append(head_ptr)
+    for i in range(len(IORequests)):
+        sequence.append(IORequests[i])
+        total_head_mov += abs(IORequests[i] - sequence[i])
+
 
 def sstf():
     global sequence, total_head_mov
