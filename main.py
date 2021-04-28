@@ -101,6 +101,11 @@ def main():
 
         else:
             print("Unknown option")
+            continue
+
+        # Output
+        print(f"Sequence: {', '.join(str(x) for x in sequence)}")
+        print(f"Total head movement: {total_head_mov}")
 
 
 if __name__ == '__main__':
