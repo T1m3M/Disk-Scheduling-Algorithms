@@ -52,8 +52,10 @@ def main():
     global IORequests, head_ptr, sequence, total_head_mov
 
     # User's input
+    # I/O requests: 98, 183, 37, 122, 14, 124, 65, 67
+    # Head pointer: 53
     queue = input("I/O requests: ")
-    for request in queue.split():
+    for request in queue.split(", "):
         if int(request) < MIN_REQUEST or int(request) > MAX_REQUEST:
             print(f"The I/O requests must be between {MIN_REQUEST}-{MAX_REQUEST}")
             exit()
