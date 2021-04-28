@@ -11,7 +11,11 @@ def main():
     # User's input
     queue = input("I/O requests: ")
     for request in queue.split():
-        IORequests.append(int(request))
+        if int(request) < MIN_REQUEST or int(request) > MAX_REQUEST:
+            print(f"The I/O requests must be between {MIN_REQUEST}-{MAX_REQUEST}")
+            exit()
+        else:
+            IORequests.append(int(request))
     head_ptr = int(input("Head pointer: "))
 
 
