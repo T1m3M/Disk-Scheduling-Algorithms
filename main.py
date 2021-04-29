@@ -40,14 +40,24 @@ def sstf():
     while False in finished_requests:
         diff = [abs(curr - request) for request in IORequests]
         waiting_requests_diff = []
+        print(f"diff = {diff}")
+        print(f"finished = {finished_requests}")
 
         # Getting only the unfinished requests
         for i in range(len(diff)):
             if not finished_requests[i]:
                 waiting_requests_diff.append(diff[i])
 
+        print(f"waiting = {waiting_requests_diff}")
+
         # Getting the minimum cost, appending the request and mark as finished
-        nearest_request_index = diff.index(min(waiting_requests_diff))
+        for i in range(len(diff)):
+            # If more than one minimum get the unfinished request
+            if not finished_requests[i]:
+                nearest_request_index = diff.index(min(waiting_requests_diff))
+            else:
+                diff[i] = max(diff)
+
         curr = IORequests[nearest_request_index]
         sequence.append(curr)
         finished_requests[nearest_request_index] = True
