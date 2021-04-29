@@ -149,9 +149,11 @@ def look():
 
 def c_look():
     global sequence, total_head_mov
+
     start = 0
     temp = 0
     IORequests.append(head_ptr)
+
     # Sorting the array
     for i in range(0, len(IORequests)):
         for j in range(i + 1, len(IORequests)):
@@ -163,8 +165,10 @@ def c_look():
     for i in range(1, len(IORequests)):
         if IORequests[i] == head_ptr:
             start = i
+
     for i in range(start, len(IORequests)):
         sequence.append(IORequests[i])
+
     for i in range(0, start):
         sequence.append(IORequests[i])
 
@@ -173,10 +177,13 @@ def c_look():
 
 def newly_opt_alg():
     global sequence, total_head_mov
+
     temp = 0
     sequence.append(head_ptr)
+
     if head_ptr != 0:
         IORequests.append(0)
+
     # Sorting the array
     for i in range(0, len(IORequests)):
         for j in range(i + 1, len(IORequests)):
