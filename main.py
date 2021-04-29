@@ -52,19 +52,95 @@ def sstf():
     total_head_mov = calc_head_mov()
 
 
+
+
 def scan():
     global sequence, total_head_mov
-    return
+    left=[]
+    right=[]
+
+    left.append(head_ptr)
+    left.append(0)
+    for i in range(0, len(IORequests)):
+
+        if(IORequests[i] < head_ptr):
+            left.append(IORequests[i])
+        else :
+            right.append(IORequests[i])
+
+    # we move from head ptr to left then to right
+    left.sort()
+    left.reverse()
+
+    right.sort()
+
+    for i in range(0, len(left)):
+            sequence.append(left[i])
+
+    for i in range(0, len(right)):
+        sequence.append(right[i])
+
+    total_head_mov = calc_head_mov()
+
+
 
 
 def c_scan():
     global sequence, total_head_mov
-    return
+    left = []
+    right = []
+
+    right.append(head_ptr)
+    left.append(0)
+    right.append(199)
+    for i in range(0, len(IORequests)):
+
+        if (IORequests[i]>head_ptr):
+            right.append(IORequests[i])
+        else:
+            left.append(IORequests[i])
+
+    # we move from head ptr to right then to left (last point in right = first point in left) .
+    left.sort()
+
+    right.sort()
+
+    for i in range(0, len(right)):
+        sequence.append(right[i])
+
+    for i in range(0, len(left)):
+        sequence.append(left[i])
+
+    total_head_mov = calc_head_mov()
 
 
 def look():
     global sequence, total_head_mov
-    return
+    left = []
+    right = []
+
+    left.append(head_ptr)
+    for i in range(0, len(IORequests)):
+
+        if (IORequests[i] < head_ptr):
+            left.append(IORequests[i])
+
+        else:
+            right.append(IORequests[i])
+
+    # we move from head ptr to left then to right
+    left.sort()
+    left.reverse()
+
+    right.sort()
+
+    for i in range(0, len(left)):
+        sequence.append(left[i])
+
+    for i in range(0, len(right)):
+        sequence.append(right[i])
+
+    total_head_mov = calc_head_mov()
 
 
 def c_look():
