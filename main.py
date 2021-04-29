@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
-import numpy as np
+#import matplotlib.pyplot as plt
+#import numpy as np
 
 # globals
 MIN_REQUEST = 0
@@ -148,7 +148,30 @@ def look():
 
 def c_look():
     global sequence, total_head_mov
-    return
+    left = []
+    right = []
+
+    right.append(head_ptr)
+
+    for i in range(0, len(IORequests)):
+
+        if (IORequests[i] > head_ptr):
+            right.append(IORequests[i])
+        else:
+            left.append(IORequests[i])
+
+    # we move from head ptr to right then to left .
+    left.sort()
+
+    right.sort()
+
+    for i in range(0, len(right)):
+        sequence.append(right[i])
+
+    for i in range(0, len(left)):
+        sequence.append(left[i])
+
+    total_head_mov = calc_head_mov()
 
 
 def newly_opt_alg():
