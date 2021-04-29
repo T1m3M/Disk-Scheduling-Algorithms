@@ -1,5 +1,5 @@
-#import matplotlib.pyplot as plt
-#import numpy as np
+import matplotlib.pyplot as plt
+import numpy as np
 
 # globals
 MIN_REQUEST = 0
@@ -143,8 +143,8 @@ def look():
 
 def c_look():
     global sequence, total_head_mov
-    left = []
-    right = []
+    left=[]
+    right=[]
 
     right.append(head_ptr)
 
