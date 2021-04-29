@@ -143,14 +143,14 @@ def look():
 
 def c_look():
     global sequence, total_head_mov
-    left=[]
-    right=[]
+    left = []
+    right = []
 
     right.append(head_ptr)
 
     for i in range(0, len(IORequests)):
 
-        if (IORequests[i] > head_ptr):
+        if IORequests[i] > head_ptr:
             right.append(IORequests[i])
         else:
             left.append(IORequests[i])
@@ -186,11 +186,11 @@ def plot_graph():
     plt.plot(sequence, y_axis)
     plt.xlim(MIN_REQUEST, MAX_REQUEST)
     plt.xticks(np.arange(MIN_REQUEST, MAX_REQUEST, 20))
-    plt.xlabel("I/O requests")
 
     # Placing the request number in annotations
     fig, ax = plt.subplots()
     ax.plot(sequence, y_axis, 'bo-')
+    ax.set_xlabel("I/O requests")
 
     for X, Y in zip(sequence, y_axis):
         ax.annotate('{}'.format(X), xy=(X, Y), xytext=(-5, 5), ha='right', textcoords='offset points')
