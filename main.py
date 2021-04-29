@@ -47,7 +47,13 @@ def sstf():
                 waiting_requests_diff.append(diff[i])
 
         # Getting the minimum cost, appending the request and mark as finished
-        nearest_request_index = diff.index(min(waiting_requests_diff))
+        for i in range(len(diff)):
+            # If more than one minimum get the unfinished request
+            if not finished_requests[i]:
+                nearest_request_index = diff.index(min(waiting_requests_diff))
+            else:
+                diff[i] = max(diff)
+
         curr = IORequests[nearest_request_index]
         sequence.append(curr)
         finished_requests[nearest_request_index] = True
@@ -161,6 +167,7 @@ def c_look():
         sequence.append(IORequests[i])
     for i in range(0, start):
         sequence.append(IORequests[i])
+
     total_head_mov = calc_head_mov()
 
 
@@ -195,11 +202,11 @@ def plot_graph():
     plt.plot(sequence, y_axis)
     plt.xlim(MIN_REQUEST, MAX_REQUEST)
     plt.xticks(np.arange(MIN_REQUEST, MAX_REQUEST, 20))
-    plt.xlabel("I/O requests")
 
     # Placing the request number in annotations
     fig, ax = plt.subplots()
     ax.plot(sequence, y_axis, 'bo-')
+    ax.set_xlabel("I/O requests")
 
     for X, Y in zip(sequence, y_axis):
         ax.annotate('{}'.format(X), xy=(X, Y), xytext=(-5, 5), ha='right', textcoords='offset points')
