@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
 # globals
 MIN_REQUEST = 0
 MAX_REQUEST = 199
@@ -77,6 +80,30 @@ def newly_opt_alg():
     return
 
 
+def plot_graph():
+
+    y_axis = []
+
+    # Initializing the Y-axis
+    for i in range(len(sequence)-1, -1, -1):
+        y_axis.append(i)
+
+    # Plotting the sequence
+    plt.plot(sequence, y_axis)
+    plt.xlim(MIN_REQUEST, MAX_REQUEST)
+    plt.xticks(np.arange(MIN_REQUEST, MAX_REQUEST, 20))
+    plt.xlabel("I/O requests")
+
+    # Placing the request number in annotations
+    fig, ax = plt.subplots()
+    ax.plot(sequence, y_axis, 'bo-')
+
+    for X, Y in zip(sequence, y_axis):
+        ax.annotate('{}'.format(X), xy=(X, Y), xytext=(-5, 5), ha='right', textcoords='offset points')
+
+    plt.show()
+
+
 def main():
     global IORequests, head_ptr, sequence, total_head_mov
 
@@ -137,6 +164,8 @@ def main():
         # Output
         print(f"Sequence: {', '.join(str(x) for x in sequence)}")
         print(f"Total head movement: {total_head_mov}")
+
+        plot_graph()
 
         # reset the output variables
         sequence.clear()
