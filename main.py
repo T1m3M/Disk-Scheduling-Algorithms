@@ -5,7 +5,7 @@ import numpy as np
 MIN_REQUEST = 0
 MAX_REQUEST = 199
 IORequests = []
-head_ptr = 0
+head_ptr = 0  # 53
 
 # outputs
 sequence = []
@@ -143,20 +143,52 @@ def look():
 
 def c_look():
     global sequence, total_head_mov
-    return
+    start = 0
+    temp = 0
+    IORequests.append(head_ptr)
+    # Sorting the array
+    for i in range(0, len(IORequests)):
+        for j in range(i + 1, len(IORequests)):
+            if IORequests[i] > IORequests[j]:
+                temp = IORequests[i]
+                IORequests[i] = IORequests[j]
+                IORequests[j] = temp
+
+    for i in range(1, len(IORequests)):
+        if IORequests[i] == head_ptr:
+            start = i
+    for i in range(start, len(IORequests)):
+        sequence.append(IORequests[i])
+    for i in range(0, start):
+        sequence.append(IORequests[i])
+    total_head_mov = calc_head_mov()
 
 
 def newly_opt_alg():
     global sequence, total_head_mov
-    return
+    temp = 0
+    sequence.append(head_ptr)
+    if head_ptr != 0:
+        IORequests.append(0)
+    # Sorting the array
+    for i in range(0, len(IORequests)):
+        for j in range(i + 1, len(IORequests)):
+            if IORequests[i] > IORequests[j]:
+                temp = IORequests[i]
+                IORequests[i] = IORequests[j]
+                IORequests[j] = temp
+
+    for i in range(0, len(IORequests)):
+        sequence.append(IORequests[i])
+
+    total_head_mov = calc_head_mov()
 
 
 def plot_graph():
-
     y_axis = []
 
     # Initializing the Y-axis
-    for i in range(len(sequence)-1, -1, -1):
+    for i in range(len(sequence) - 1, -1, -1):
         y_axis.append(i)
 
     # Plotting the sequence
