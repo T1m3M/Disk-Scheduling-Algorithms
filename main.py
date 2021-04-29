@@ -40,15 +40,11 @@ def sstf():
     while False in finished_requests:
         diff = [abs(curr - request) for request in IORequests]
         waiting_requests_diff = []
-        print(f"diff = {diff}")
-        print(f"finished = {finished_requests}")
 
         # Getting only the unfinished requests
         for i in range(len(diff)):
             if not finished_requests[i]:
                 waiting_requests_diff.append(diff[i])
-
-        print(f"waiting = {waiting_requests_diff}")
 
         # Getting the minimum cost, appending the request and mark as finished
         for i in range(len(diff)):
